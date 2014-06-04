@@ -17,6 +17,9 @@ namespace Ui {
 class PROBBROWSER: public QWidget
 {
   Q_OBJECT
+private:
+   Ui::PROBBROWSER *ui;
+
 public:
   /* Main default constructor */
   explicit PROBBROWSER( QWidget *parent = 0 );
@@ -28,20 +31,25 @@ signals:
   void NeedProblemsList( PROBLEM_TYPE );
 
   /* Open problem signal */
-  void OpenProblem( PROBLEM_TYPE, QString );
+  void OpenProblem( PROBLEM_TYPE, QString, STATE );
 
-  /* Edit dialog dignal */
+  /* Edit dialog signal */
   void NeedEditDialog( PROBLEM_TYPE, QString );
 
-  /* Show dialog */
+  /* Show dialog signal */
   void ShowDialog( QString, PROBLEM_TYPE );
 
+  /* Create new problem signal */
+  void NewProblem( PROBLEM_TYPE );
+
+  /* Save new problem */
+  void SaveProblem( PROBLEM_TYPE, QString );
 public slots:
   /* Menu "About" item processing */
   void About( void );
 
-  /* Menu "New problem" item processing */
-  void NewProb( void );
+  /* Menu "Connect" item processing */
+  void Connect( void );
 
   /* Connection processing slot */
   void Connected( QString );
@@ -52,9 +60,11 @@ public slots:
   /* Problem opened slot */
   void ProblemOpened( QString );
 
-  /* Set problem dialog */
+  /* Set problem dialog slot */
   void SetDialog( QDialog * );
 
+  /* Problem saving status */
+  void Saved( bool );
 private slots:
 
   /* Choose curent problem combo box slot */
@@ -65,8 +75,12 @@ private slots:
 
   /* Edit problem button slot */
   void on_prob_edit_button_clicked();
-private:
-   Ui::PROBBROWSER *ui;
+
+  /* Open problem button processing slot */
+  void on_new_problem_button_clicked();
+
+  /* Save problem to base */
+  void on_save_problem_button_clicked();
 };
 
 #endif // _PROBBROWSER_H_

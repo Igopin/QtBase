@@ -36,4 +36,24 @@ void PROB_LAE::Solve( void )
   res = - (c + b) / a;
 }
 
+double PROB_LAE::GetA( void )
+{
+  return this->a;
+}
+
+double PROB_LAE::GetB( void )
+{
+  return this->b;
+}
+
+double PROB_LAE::GetC( void )
+{
+ return this->c;
+}
+
+double PROB_LAE::GetRes( void )
+{
+  return this->res;
+}
+
 /* END OF 'lae.cpp' FUNCTION */

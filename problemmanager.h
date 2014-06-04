@@ -14,10 +14,19 @@ private:
   QList<PROBLEM *> problem_list;
 
   /* Create new LAE problem */
-  QDialog * OpenLAE( QString );
+  QDialog * OpenLAE( QString, STATE );
 
   /* Create new SLAE problem */
-  QDialog * OpenSLAE( QString );
+  QDialog * OpenSLAE( QString, STATE );
+
+  /* Save LAE in database function */
+  bool SaveLAE( QString );
+
+  /* Save SLAE in database function */
+  bool SaveSLAE( QString );
+
+  /* Check existing problem name */
+  bool IsExist( QString, PROBLEM_TYPE );
 public:
   explicit PROBLEMMANAGER(QObject *parent = 0);
 
@@ -31,12 +40,19 @@ signals:
   /* Get SOLVELAE dialog pointer */
   void GetSolveDialog(QDialog *);
 
+  /* Saving problme status */
+  void Saved( bool );
+
 public slots:
   /* Set problem slot */
-  void SetProblemsList(PROBLEM_TYPE);
+  void SetProblemsList( PROBLEM_TYPE );
 
   /* Open problem slot */
-  void OpenProblem(PROBLEM_TYPE, QString);
+  void OpenProblem( PROBLEM_TYPE, QString, STATE );
+
+  /* Save problem slot */
+  void SaveProblem( PROBLEM_TYPE, QString );
+
 
 };
 

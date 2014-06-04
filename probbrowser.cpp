@@ -23,6 +23,67 @@ PROBBROWSER::PROBBROWSER(QWidget *parent) :
   ui->problem_type_combo_box->addItems(problem_types);
 } /* End of constructor */
 
+
+
+/***************************************************************************************
+ * FUNCTIONS                                                                           *
+ ***************************************************************************************/
+
+/***************************************************************************************
+ * SLOTS                                                                               *
+ ***************************************************************************************/
+
+
+/****** PRIVATE ******/
+
+
+/* Choose curent problem combo box slot */
+void PROBBROWSER::on_problem_type_combo_box_currentIndexChanged(const QString &problem_type )
+{
+  emit NeedProblemsList(STRTOPR(problem_type));
+} /* End of 'on_problem_type_combo_box_currentIndexChanged' slot */
+
+/* Open button processing slot */
+void PROBBROWSER::on_open_problem_button_clicked()
+{
+  emit OpenProblem(STRTOPR(ui->problem_type_combo_box->currentText()),
+                   ui->current_problem_combo_box->currentText(),
+                   EXIST);
+} /* End of 'on_open_problem_button_clicked' slot */
+
+/* Edit problem button slot */
+void PROBBROWSER::on_prob_edit_button_clicked()
+{
+  emit ShowDialog(ui->opened_problem_combo_box->currentText(),
+                  STRTOPR(ui->problem_type_combo_box->currentText()));
+} /* End of 'on_prob_edit_button_clicked' slot */
+
+/* Open problem button processing function */
+void PROBBROWSER::on_new_problem_button_clicked()
+{
+  bool ok;
+  QString problem_name = QInputDialog::getText(this, tr("Choose problem name"),
+    tr("Problem name:"), QLineEdit::Normal, QDir::home().dirName(), &ok);
+
+  if (ok && !problem_name.isEmpty())
+    emit OpenProblem(STRTOPR(ui->problem_type_combo_box->currentText()),
+                     problem_name,
+                     NEW);
+
+} /* End of 'on_new_problem_button_clicked' function */
+
+/* Save problem to base */
+void PROBBROWSER::on_save_problem_button_clicked()
+{
+  QString name = ui->opened_problem_combo_box->currentText();
+  if (!name.isEmpty())
+    emit SaveProblem(STRTOPR(ui->problem_type_combo_box->currentText()),
+                     ui->opened_problem_combo_box->currentText());
+} /* End of 'on_save_problem_button_clicked' slot */
+
+
+/****** PUBLIC ******/
+
 /* Menu item "About" processing function */
 void PROBBROWSER::About( void )
 {
@@ -30,7 +91,7 @@ void PROBBROWSER::About( void )
 } /* End of 'About' function */
 
 /* Menu item "New Problem" processing function */
-void PROBBROWSER::NewProb( void )
+void PROBBROWSER::Connect( void )
 {
   NEWPROBDIALOG npd(this);
   connect(&npd, SIGNAL(Connected(QString)),
@@ -76,27 +137,12 @@ void PROBBROWSER::SetDialog( QDialog * solve_dialog )
     solve_dialog, SLOT(Show(QString, PROBLEM_TYPE)));
 } /* End of 'SetLAEDialog' slot */
 
-/* Choose curent problem combo box slot */
-void PROBBROWSER::on_problem_type_combo_box_currentIndexChanged(const QString &problem_type )
+/* Problem saving status */
+void PROBBROWSER::Saved( bool is_save )
 {
-  emit NeedProblemsList(STRTOPR(problem_type));
-} /* End of 'on_problem_type_combo_box_currentIndexChanged' slot */
-
-/* Open button processing slot */
-void PROBBROWSER::on_open_problem_button_clicked()
-{
-  QString prob_to_open = ui->problem_type_combo_box->currentText();
-
-  emit OpenProblem(STRTOPR(prob_to_open),
-                   ui->current_problem_combo_box->currentText());
-} /* End of 'on_open_problem_button_clicked' slot */
-
-/* Edit problem button slot */
-void PROBBROWSER::on_prob_edit_button_clicked()
-{
-  emit ShowDialog(ui->opened_problem_combo_box->currentText(),
-                  STRTOPR(ui->problem_type_combo_box->currentText()));
-} /* End of 'on_prob_edit_button_clicked' slot */
+  if (is_save)
+    emit NeedProblemsList(STRTOPR(ui->problem_type_combo_box->currentText()));
+} /* End of 'Saved' slot */
 
 /* Default Qt destructor */
 PROBBROWSER::~PROBBROWSER()
@@ -105,3 +151,4 @@ PROBBROWSER::~PROBBROWSER()
 } /* End of Qt destructor */
 
 /* END OF 'probbrowser.cpp' FILE */
+

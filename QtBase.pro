@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     solvelae.cpp \
     solveslae.cpp \
     prob_slae.cpp \
-    prob_lae.cpp
+    prob_lae.cpp \
+    setdimdialog.cpp
 
 HEADERS  += probbrowser.h \
     newprobdialog.h \
@@ -33,10 +34,12 @@ HEADERS  += probbrowser.h \
     solvelae.h \
     solveslae.h \
     prob_slae.h \
-    prob_lae.h
+    prob_lae.h \
+    setdimdialog.h
 
 FORMS += \
     newprobdialog.ui \
     probbrowser.ui \
     solvelae.ui \
-    solveslae.ui
+    solveslae.ui \
+    setdimdialog.ui

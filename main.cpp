@@ -30,17 +30,23 @@ int main(int argc, char *argv[])
   QObject::connect(&pb_manager, SIGNAL(GetProblemsList(QStringList, QStringList)),
                    &pb_browser, SLOT(GetProblemsList(QStringList, QStringList)));
 
-  QObject::connect(&pb_browser, SIGNAL(OpenProblem(PROBLEM_TYPE, QString)),
-                   &pb_manager, SLOT(OpenProblem(PROBLEM_TYPE, QString)));
+  QObject::connect(&pb_browser, SIGNAL(OpenProblem(PROBLEM_TYPE, QString, STATE)),
+                   &pb_manager, SLOT(OpenProblem(PROBLEM_TYPE, QString, STATE)));
 
   QObject::connect(&pb_manager, SIGNAL(ProblemOpened(QString)),
                    &pb_browser, SLOT(ProblemOpened(QString)));
+
+  QObject::connect(&pb_browser, SIGNAL(SaveProblem(PROBLEM_TYPE,QString)),
+                   &pb_manager, SLOT(SaveProblem(PROBLEM_TYPE,QString)));
+
+  QObject::connect(&pb_manager, SIGNAL(Saved(bool)),
+                   &pb_browser, SLOT(Saved(bool)));
 
   QObject::connect(&pb_manager, SIGNAL(GetSolveDialog(QDialog *)),
                    &pb_browser, SLOT(SetDialog(QDialog *)));
 
   QMenu *file_menu = main_wnd.menuBar()->addMenu(QObject::tr("&File"));
-  file_menu->addAction(QObject::tr("&Connect database"), &pb_browser, SLOT(NewProb()));
+  file_menu->addAction(QObject::tr("&Connect database"), &pb_browser, SLOT(Connect()));
   file_menu->addAction(QObject::tr("&Exit"), &app, SLOT(quit()));
 
   QMenu *help_menu = main_wnd.menuBar()->addMenu(QObject::tr("&Help"));

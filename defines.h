@@ -7,7 +7,7 @@
 #include <QString>
 
 
-#define DBG(str_1, str2) QMessageBox::critical(NULL, QString(str_1), QString(str_2));
+#define DBG(str_1, str_2) QMessageBox::critical(NULL, QString(str_1), QString(str_2));
 
 typedef enum
 {
@@ -17,10 +17,18 @@ typedef enum
   SOMETHING
 } PROBLEM_TYPE;
 
+typedef enum
+{
+  NEW,
+  EXIST
+} STATE;
+
 typedef QVector<double> VEC;
 
 QString PRTOSTR( const PROBLEM_TYPE &t );
 
 PROBLEM_TYPE STRTOPR( const QString &str );
+
+
 
 #endif /* _DEFINES_H_ */

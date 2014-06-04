@@ -20,6 +20,11 @@ public:
   void SetBVec( const VEC& );
   void SetResVec( const VEC& );
 
+  /* Get Params */
+  MATRIX & GetMatrix( void );
+  VEC & GetBVec( void );
+  VEC & GetResVec( void );
+
   void Solve( void );
 signals:
   void NewRes( const VEC &v_res );

@@ -20,17 +20,13 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_SOLVELAE
 {
 public:
-    QWidget *widget;
-    QVBoxLayout *verticalLayout;
+    QGridLayout *gridLayout_5;
     QHBoxLayout *horizontalLayout_2;
     QGroupBox *groupBox;
     QGridLayout *gridLayout_3;
@@ -44,7 +40,6 @@ public:
     QHBoxLayout *horizontalLayout;
     QPushButton *prob_done_button;
     QPushButton *prob_button_solve;
-    QSpacerItem *horizontalSpacer;
     QGroupBox *groupBox_4;
     QGridLayout *gridLayout_4;
     QLineEdit *res_line_edit;
@@ -53,18 +48,14 @@ public:
     {
         if (SOLVELAE->objectName().isEmpty())
             SOLVELAE->setObjectName(QStringLiteral("SOLVELAE"));
-        SOLVELAE->resize(430, 159);
+        SOLVELAE->resize(402, 159);
         SOLVELAE->setMinimumSize(QSize(369, 140));
         SOLVELAE->setMaximumSize(QSize(16777215, 16777215));
-        widget = new QWidget(SOLVELAE);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(10, 10, 412, 144));
-        verticalLayout = new QVBoxLayout(widget);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        gridLayout_5 = new QGridLayout(SOLVELAE);
+        gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        groupBox = new QGroupBox(widget);
+        groupBox = new QGroupBox(SOLVELAE);
         groupBox->setObjectName(QStringLiteral("groupBox"));
         gridLayout_3 = new QGridLayout(groupBox);
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
@@ -77,7 +68,7 @@ public:
 
         horizontalLayout_2->addWidget(groupBox);
 
-        groupBox_2 = new QGroupBox(widget);
+        groupBox_2 = new QGroupBox(SOLVELAE);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
         gridLayout_2 = new QGridLayout(groupBox_2);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
@@ -90,7 +81,7 @@ public:
 
         horizontalLayout_2->addWidget(groupBox_2);
 
-        groupBox_3 = new QGroupBox(widget);
+        groupBox_3 = new QGroupBox(SOLVELAE);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
         gridLayout = new QGridLayout(groupBox_3);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
@@ -104,27 +95,23 @@ public:
         horizontalLayout_2->addWidget(groupBox_3);
 
 
-        verticalLayout->addLayout(horizontalLayout_2);
+        gridLayout_5->addLayout(horizontalLayout_2, 0, 0, 1, 1);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        prob_done_button = new QPushButton(widget);
+        prob_done_button = new QPushButton(SOLVELAE);
         prob_done_button->setObjectName(QStringLiteral("prob_done_button"));
         prob_done_button->setMinimumSize(QSize(0, 41));
 
         horizontalLayout->addWidget(prob_done_button);
 
-        prob_button_solve = new QPushButton(widget);
+        prob_button_solve = new QPushButton(SOLVELAE);
         prob_button_solve->setObjectName(QStringLiteral("prob_button_solve"));
         prob_button_solve->setMinimumSize(QSize(0, 41));
 
         horizontalLayout->addWidget(prob_button_solve);
 
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer);
-
-        groupBox_4 = new QGroupBox(widget);
+        groupBox_4 = new QGroupBox(SOLVELAE);
         groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
         gridLayout_4 = new QGridLayout(groupBox_4);
         gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
@@ -138,7 +125,7 @@ public:
         horizontalLayout->addWidget(groupBox_4);
 
 
-        verticalLayout->addLayout(horizontalLayout);
+        gridLayout_5->addLayout(horizontalLayout, 1, 0, 1, 1);
 
 
         retranslateUi(SOLVELAE);

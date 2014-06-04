@@ -212,7 +212,7 @@
           <item>
            <layout class="QVBoxLayout" name="verticalLayout">
             <item>
-             <widget class="QPushButton" name="pushButton_7">
+             <widget class="QPushButton" name="new_problem_button">
               <property name="minimumSize">
                <size>
                 <width>161</width>
@@ -238,7 +238,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_3">
+             <widget class="QPushButton" name="save_problem_button">
               <property name="minimumSize">
                <size>
                 <width>161</width>

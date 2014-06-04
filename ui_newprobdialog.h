@@ -23,6 +23,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpinBox>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -42,12 +43,14 @@ public:
     QLabel *DTBTextLab;
     QSpinBox *portSpinBox;
     QLabel *PORTTextLabel;
-    QPushButton *startButton;
-    QPushButton *exitButton;
     QWidget *widget;
+    QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QCheckBox *checkBox;
     QLabel *label;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *startButton;
+    QPushButton *exitButton;
 
     void setupUi(QDialog *NEWPROBDIALOG)
     {
@@ -117,18 +120,14 @@ public:
 
         gridLayout->addWidget(PORTTextLabel, 4, 0, 1, 1);
 
-        startButton = new QPushButton(NEWPROBDIALOG);
-        startButton->setObjectName(QStringLiteral("startButton"));
-        startButton->setGeometry(QRect(70, 242, 241, 31));
-        exitButton = new QPushButton(NEWPROBDIALOG);
-        exitButton->setObjectName(QStringLiteral("exitButton"));
-        exitButton->setGeometry(QRect(10, 242, 51, 31));
         widget = new QWidget(NEWPROBDIALOG);
         widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(10, 210, 301, 20));
-        horizontalLayout = new QHBoxLayout(widget);
+        widget->setGeometry(QRect(10, 210, 302, 61));
+        verticalLayout = new QVBoxLayout(widget);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
         checkBox = new QCheckBox(widget);
         checkBox->setObjectName(QStringLiteral("checkBox"));
 
@@ -138,6 +137,27 @@ public:
         label->setObjectName(QStringLiteral("label"));
 
         horizontalLayout->addWidget(label);
+
+
+        verticalLayout->addLayout(horizontalLayout);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        startButton = new QPushButton(widget);
+        startButton->setObjectName(QStringLiteral("startButton"));
+        startButton->setMinimumSize(QSize(241, 31));
+
+        horizontalLayout_2->addWidget(startButton);
+
+        exitButton = new QPushButton(widget);
+        exitButton->setObjectName(QStringLiteral("exitButton"));
+        exitButton->setMinimumSize(QSize(51, 31));
+        exitButton->setMaximumSize(QSize(51, 31));
+
+        horizontalLayout_2->addWidget(exitButton);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
 
 #ifndef QT_NO_SHORTCUT
         PSSWDTexLabel->setBuddy(editPassword);
@@ -162,10 +182,10 @@ public:
         DTBTextLab->setText(QApplication::translate("NEWPROBDIALOG", "Database Name:", 0));
         portSpinBox->setSpecialValueText(QApplication::translate("NEWPROBDIALOG", "Default", 0));
         PORTTextLabel->setText(QApplication::translate("NEWPROBDIALOG", "P&ort:", 0));
-        startButton->setText(QApplication::translate("NEWPROBDIALOG", "G\320\276", 0));
-        exitButton->setText(QApplication::translate("NEWPROBDIALOG", "Exit", 0));
         checkBox->setText(QApplication::translate("NEWPROBDIALOG", "Default settings", 0));
         label->setText(QApplication::translate("NEWPROBDIALOG", "  Support only MYSQL drivers.", 0));
+        startButton->setText(QApplication::translate("NEWPROBDIALOG", "G\320\276", 0));
+        exitButton->setText(QApplication::translate("NEWPROBDIALOG", "Exit", 0));
     } // retranslateUi
 
 };

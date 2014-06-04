@@ -37,9 +37,14 @@ public slots:
   void Show( QString, PROBLEM_TYPE );
 
 private slots:
-  /* Push 'Solve' button slot */
+
+  /* Set tables size */
+  void SetTablesSize( int );
+
+  /* Push buttons slots */
   void on_solve_button_clicked();
   void on_done_bitton_clicked();
+  void on_set_dim_button_clicked();
 };
 
 #endif // SOLVESLAE_H

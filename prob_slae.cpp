@@ -25,16 +25,25 @@ void PROB_SLAE::SetResVec( const VEC &res )
   this->res = res;
 }
 
+MATRIX & PROB_SLAE::GetMatrix( void )
+{
+  return this->matr;
+}
+
+VEC & PROB_SLAE::GetBVec( void )
+{
+  return this->b;
+}
+
+VEC & PROB_SLAE::GetResVec( void )
+{
+  return this->res;
+}
+
 void PROB_SLAE::Solve( void )
 {
   MATRIX m_inv(matr.Inverse());
   res = m_inv * b;
-  QString s;
-  s.sprintf("%g %g %g", b[0], b[1], b[2]);
-  QMessageBox::about(NULL, QString("AAA"), s);
-  s.clear();
-  s.sprintf("%g %g %g", res[0], res[1], res[2]);
-  QMessageBox::about(NULL, QString("AAA"), s);
 }
 
 

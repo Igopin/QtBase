@@ -14,6 +14,12 @@ public:
   void SetABC( double, double, double );
   void SetRes( double );
   void Solve( void );
+
+  double GetA( void );
+  double GetB( void );
+  double GetC( void );
+  double GetRes( void );
+
 public slots:
   void NewParams(double, double, double);
 signals:

@@ -51,9 +51,9 @@ public:
     QComboBox *opened_problem_combo_box;
     QSpacerItem *verticalSpacer_2;
     QVBoxLayout *verticalLayout;
-    QPushButton *pushButton_7;
+    QPushButton *new_problem_button;
     QPushButton *prob_edit_button;
-    QPushButton *pushButton_3;
+    QPushButton *save_problem_button;
     QPushButton *close_button;
 
     void setupUi(QWidget *PROBBROWSER)
@@ -167,11 +167,11 @@ public:
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        pushButton_7 = new QPushButton(groupBox_2);
-        pushButton_7->setObjectName(QStringLiteral("pushButton_7"));
-        pushButton_7->setMinimumSize(QSize(161, 31));
+        new_problem_button = new QPushButton(groupBox_2);
+        new_problem_button->setObjectName(QStringLiteral("new_problem_button"));
+        new_problem_button->setMinimumSize(QSize(161, 31));
 
-        verticalLayout->addWidget(pushButton_7);
+        verticalLayout->addWidget(new_problem_button);
 
         prob_edit_button = new QPushButton(groupBox_2);
         prob_edit_button->setObjectName(QStringLiteral("prob_edit_button"));
@@ -179,11 +179,11 @@ public:
 
         verticalLayout->addWidget(prob_edit_button);
 
-        pushButton_3 = new QPushButton(groupBox_2);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-        pushButton_3->setMinimumSize(QSize(161, 31));
+        save_problem_button = new QPushButton(groupBox_2);
+        save_problem_button->setObjectName(QStringLiteral("save_problem_button"));
+        save_problem_button->setMinimumSize(QSize(161, 31));
 
-        verticalLayout->addWidget(pushButton_3);
+        verticalLayout->addWidget(save_problem_button);
 
         close_button = new QPushButton(groupBox_2);
         close_button->setObjectName(QStringLiteral("close_button"));
@@ -219,9 +219,9 @@ public:
         open_problem_button->setText(QApplication::translate("PROBBROWSER", "Open", 0));
         pushButton->setText(QApplication::translate("PROBBROWSER", "Remove", 0));
         groupBox_2->setTitle(QApplication::translate("PROBBROWSER", "Opened problems", 0));
-        pushButton_7->setText(QApplication::translate("PROBBROWSER", "New", 0));
+        new_problem_button->setText(QApplication::translate("PROBBROWSER", "New", 0));
         prob_edit_button->setText(QApplication::translate("PROBBROWSER", "Edit", 0));
-        pushButton_3->setText(QApplication::translate("PROBBROWSER", "Save", 0));
+        save_problem_button->setText(QApplication::translate("PROBBROWSER", "Save", 0));
         close_button->setText(QApplication::translate("PROBBROWSER", "Close", 0));
     } // retranslateUi
 
